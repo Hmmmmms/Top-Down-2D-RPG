@@ -26,6 +26,23 @@ public class PlayerController : MonoBehaviour
 
     bool canMove = true;
 
+    public float PlayerHealth
+    {
+        set
+        {
+            playerHealth = value;
+
+            if (playerHealth <= 0)
+            {
+                Defeated();
+            }
+        }
+        get { return playerHealth; }
+    }
+
+    public static float playerHealth = 3;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -139,5 +156,17 @@ public class PlayerController : MonoBehaviour
     public void UnlockLockMovement()
     {
         canMove = true;
+    }
+
+    public void Defeated()
+    {
+        LockMovement();
+        animator.SetTrigger("PlayerDefeated");
+
+    }
+
+    public void RemovePlayer()
+    {
+        Destroy(gameObject);
     }
 }
