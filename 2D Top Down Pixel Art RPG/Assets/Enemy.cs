@@ -6,8 +6,6 @@ public class Enemy : MonoBehaviour
 {
     Animator animator;
 
-    public float damage = 1;
-
     public float Health
     {
         set { health = value; 
@@ -37,18 +35,6 @@ public class Enemy : MonoBehaviour
     {
         Destroy(gameObject);
     }
-    private void OnCollisionEnter2D(Collision2D col)
-    {
-        
-            print("PlayerDamage");
-            //Deal damage to enemy
-            PlayerController playerController = col.collider.GetComponent<PlayerController>();
-
-            if (playerController != null)
-            {
-                playerController.PlayerHealth -= damage;
-            }
-        
-    }
+    
 
 }
